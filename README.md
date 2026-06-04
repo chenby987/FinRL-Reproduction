@@ -1,4 +1,46 @@
-# FinRL 論文重現分析報告
+# FinRL 論文重現分析報告與使用指南
+
+這是一份針對經典交易論文《FinRL: A Deep Reinforcement Learning Library for Automated Stock Trading in Quantitative Finance》的重現專案與分析報告。
+
+## 🚀 快速開始 (Quick Start)
+
+### 1. 安裝環境
+請務必使用 **Python 3.10** 以避免依賴衝突（如 cvxpy）：
+```bash
+conda create -n finrl python=3.10
+conda activate finrl
+
+# 安裝必要的系統依賴 (Ubuntu/Debian)
+sudo apt-get update
+sudo apt-get install cmake swig
+
+# TA-Lib 必須使用 conda 安裝
+conda install -c conda-forge ta-lib
+
+# 安裝 FinRL 主程式及其餘依賴
+pip install -e .
+```
+
+### 2. 執行訓練與回測
+我們提供了兩個主要的實驗腳本：
+
+**A. 重現原論文交易期（2019-2020 牛市）**
+此腳本會自動下載 DOW 30 數據、訓練 5 種 DRL 模型，並對比 DJIA 產生圖表 `cross_dataset_result.png`：
+```bash
+python cross_dataset_experiment.py
+```
+
+**B. 2026 Q1 近期數據測試（熊市）**
+測試 DRL 模型在熊市環境下的泛化能力，會產生 `backtest_result.png`：
+```bash
+python examples/FinRL_StockTrading_2026_1_data.py
+python examples/FinRL_StockTrading_2026_2_train.py
+python examples/FinRL_StockTrading_2026_3_backtest.py
+```
+
+---
+
+## 📊 論文重現完整分析報告
 
 ---
 
